@@ -5,7 +5,9 @@
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "redux-form": "^7.4.2",
+    "sane-email-validation": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
