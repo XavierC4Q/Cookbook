@@ -1,6 +1,7 @@
 import constants from './constants'
 
 const login = (loginInfo) => {
+    console.log(loginInfo)
     return {
         type: constants.LOGIN,
         login: loginInfo
@@ -14,19 +15,6 @@ const register = (registerInfo) => {
     }
 }
 
-const isLoggedIn = (info) => {
-    return {
-        type: constants.IS_LOGGED_IN,
-        loggedIn: info
-    }
-}
-
-const logout = () => {
-    return {
-        type: constants.LOGOUT
-    }
-}
-
 const userAuthError = (error) => {
     return {
         type: constants.USER_AUTH_ERROR,
@@ -34,10 +22,9 @@ const userAuthError = (error) => {
     }
 }
 
-module.exports = {
+
+export default {
     login,
     register,
-    logout,
-    isLoggedIn,
     userAuthError
 }

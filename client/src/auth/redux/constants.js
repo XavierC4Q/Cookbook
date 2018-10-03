@@ -1,13 +1,9 @@
 const LOGIN = 'LOGIN'
 const REGISTER = 'REGISTER'
-const LOGOUT = 'LOGOUT'
-const IS_LOGGED_IN = 'IS_LOGGED_IN'
 const USER_AUTH_ERROR = 'USER_AUTH_ERROR'
 
 module.exports = {
     LOGIN,
-    LOGOUT,
     REGISTER,
-    IS_LOGGED_IN,
     USER_AUTH_ERROR
 }
