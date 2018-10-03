@@ -1,0 +1,7 @@
+const IS_LOGGED_IN = 'IS_LOGGED_IN'
+const USER_AUTH_ERROR = 'USER_AUTH_ERROR'
+
+module.exports = {
+    IS_LOGGED_IN,
+    USER_AUTH_ERROR
+}
