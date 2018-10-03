@@ -2,11 +2,13 @@ export default (state = { currentUser: null, message: '' }, action) => {
     switch(action.type){
         case 'LOGIN':
             return {
+                ...state,
                 currentUser: action.login,
                 message: 'LOGGED IN SUCCESS'
             }
         case 'REGISTER':
             return {
+                ...state,
                 currentUser: action.register,
                 message: 'REGISTERED ACCOUNT SUCCESSFULLY'
             }
