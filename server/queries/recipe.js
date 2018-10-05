@@ -1,34 +1,45 @@
 const Recipe = require('../models/recipe')
 
+function allUserRecipes(req, res){
+    const {
+        username
+    } = req.params
+
+    Recipe.find({ username: username }, (error, recipes) => {
+        if(error) return res.write(error)
+        if(!recipes) return res.write(new Error('FAILED ALL RECIPES'))
+
+        return res.json(recipes)
+    })
+}
+
 function addRecipe(req, res){
     const {
         username,
         recipeName,
         vegan,
         vegetarian,
+        description,
         ingredients
     } = req.body
 
     let newRecipe = new Recipe({
         username,
         recipeName,
+        description,
         vegan,
-        vegetarian
+        vegetarian,
+        ingredients
     })
-
     newRecipe.save((error, recipe) => {
         if(error) return res.write(error)
-        if(!recipe) return res.write(new Error('ERROR SAVING RECIPE'))
+        if(!recipe) return res.write(new Error('CANNOT SAVE NEW RECIPE'))
 
-        Recipe.findByIdAndUpdate(recipe._id, { $pushAll: { ingredients: ingredients } }, { upsert: true }, (error, success) => {
-            if(error) return res.write(error)
-            if(!success) return res.write(new Error('FAILED ADDING INGREDIENTS'))
-
-            res.json(success)
-        })
+        res.json(recipe)
     })
 }
 
 module.exports = {
-    addRecipe
+    addRecipe,
+    allUserRecipes
 }
