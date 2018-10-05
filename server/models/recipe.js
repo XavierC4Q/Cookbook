@@ -22,15 +22,8 @@ const RecipeSchema = new schema({
         type: Boolean,
         default: false
     },
-    ingredients: [{
-        name: String,
-        amount: String,
-        measurement: String
-    }],
-    description: {
-        type: String,
-        default: 'Latest recipe here'
-    }
+    ingredients: Array,
+    description: String
 });
 
 const Recipe = mongoose.model('Recipe', RecipeSchema);

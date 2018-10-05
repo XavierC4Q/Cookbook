@@ -13,12 +13,8 @@ const UserSchema = new schema({
         unique: true,
         required: true
     },
-    firstName: {
-        type: String
-    },
-    lastName: {
-        type: String
-    },
+    firstName: String,
+    lastName: String,
     age: {
         type: Number,
         required: true
