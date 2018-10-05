@@ -9,7 +9,6 @@ import thunk from 'redux-thunk'
 import allReducers from './reducers/root'
 
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 const config = () => {
     return createStore(
@@ -28,4 +27,3 @@ ReactDOM.render(
     <App />
     </BrowserRouter>
 </ReduxProvider>, document.getElementById('root'));
-registerServiceWorker();

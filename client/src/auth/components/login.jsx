@@ -31,7 +31,8 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.auth.currentUser
+        currentUser: state.auth.currentUser,
+        authError: state.auth.message 
     }
 }
 
