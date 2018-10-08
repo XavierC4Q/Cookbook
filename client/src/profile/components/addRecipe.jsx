@@ -26,17 +26,16 @@ const renderIngredients = ({ fields, label }) => (
             }}>ADD INGREDIENT</button>
         </div>
     </ol>
-)
+);
 
-
-const renderInputs = ({ input, type, label }) => (
+const renderInputs = ({ name, input, type, label }) => (
     <div>
         <label>{label}</label>
         <div>
-            <input type={type} input={{ ...input }} placeholder={label} />
+            <input name={name} type={type} {...input} placeholder={label} />
         </div>
     </div>
-)
+);
 
 class AddRecipe extends React.Component {
     constructor(){
@@ -79,14 +78,11 @@ class AddRecipe extends React.Component {
         return (
             <div>
                 <h1>ADD YOUR RECIPE</h1>
-                <form onSubmit={(e) => {
-                    e.preventDefault()
-                    handleSubmit(this.submitRecipe)
-                }}>
+                <form onSubmit={handleSubmit(this.submitRecipe)}>
                     <Field label='Recipe Name' name='recipeName' type='text' component={renderInputs} />
                     <Field label='Vegetarian' name='vegetarian' type='checkbox' component={renderInputs} />
                     <Field label='Vegan' name='vegan' type='checkbox' component={renderInputs} />
-                    <Field label='Recipe Description' name='description' type='textarea' component={renderInputs} />
+                    <Field name='description' label='Recipe Description' type='textarea' component={renderInputs} />
                     <FieldArray name='ingredients' label='INGREDIENTS' component={renderIngredients} />
                     <button type='submit'>SUBMIT NEW RECIPE</button>
                 </form>
@@ -105,7 +101,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addRecipe: (recipe) => {
-            dispatches.addUserRecipe(recipe)
+            dispatch(dispatches.addUserRecipe(recipe))
         }
     }
 }

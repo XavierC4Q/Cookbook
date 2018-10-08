@@ -5,13 +5,14 @@ import LoggedInProfile from './loggedInProfile'
 const UserProfile = ({ currentUser, recipes, pageOwner, logout }) => {
 
     if(!currentUser){
-        return (<Visiting pageOwner={pageOwner}/>)
+        return (<Visiting recipes={recipes} pageOwner={pageOwner}/>)
     }
-    else if(currentUser.username === pageOwner.username){
-        return (<LoggedInProfile pageOwner={pageOwner} recipes={recipes} logout={logout}/>)
+    
+    if(currentUser.username === pageOwner.username){
+        return (<LoggedInProfile pageOwner={currentUser} recipes={recipes} logout={logout}/>)
     }
     else {
-        return (<Visiting pageOwner={pageOwner}/>)
+        return (<Visiting recipes={recipes} pageOwner={pageOwner}/>)
     }
 }
 

@@ -39,12 +39,12 @@ const getUserRecipes = (username) => {
 
 const addUserRecipe = (recipe) => {
     return (dispatch) => {
-        console.log(recipe)
         const {
             username,
             recipeName,
             vegan, 
             vegetarian,
+            description,
             ingredients
         } = recipe
 
@@ -53,6 +53,7 @@ const addUserRecipe = (recipe) => {
             recipeName: recipeName,
             vegan: vegan,
             vegetarian: vegetarian,
+            description: description,
             ingredients: ingredients
         })
         .then(res => {
