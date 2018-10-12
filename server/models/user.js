@@ -18,7 +18,8 @@ const UserSchema = new schema({
     age: {
         type: Number,
         required: true
-    }
+    },
+    friends: Array
 });
 
 UserSchema.plugin(PassportLocalMongoose);

@@ -52,9 +52,49 @@ function deleteUser(req, res){
     })
 };
 
+function addFriend(req, res){
+    const {
+        id,
+        friend
+    } = req.body
+
+    User.findByIdAndUpdate(id, { $push: {friends: friend} }, {new: true},(error, success) => {
+        if(error) {
+            res.write(error)
+            return res.end()
+        }
+        if(!success) {
+            return res.write('not added')
+        }
+
+        return res.json(success)
+    })
+}
+
+function removeFriend(req, res){
+    const {
+        id,
+        friend
+    } = req.body
+
+    User.findByIdAndUpdate(id, { $pull: { friends: friend } }, {new: true}, (error, success) => {
+        if(error) {
+            res.write(error)
+            return res.end()
+        }
+        if(!success) {
+            return res.write('not removed')
+        }
+
+        return res.json(success)
+    })
+}
+
 module.exports = {
     allUsers,
     getUserByUsername,
     editUser,
+    addFriend,
+    removeFriend,
     deleteUser
 };

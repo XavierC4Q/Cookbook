@@ -48,7 +48,13 @@ function registerUser(req, res) {
         await registered.setPassword(password)
         await registered.save()
 
-        return res.json(registered)
+        Promise.resolve(login(req, username, password))
+        .then((user) => {
+            return res.json(user)
+        }).catch((error) => {
+            res.write(error)
+            return res.end()
+        })
     })
 }
 
