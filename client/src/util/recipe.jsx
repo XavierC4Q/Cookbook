@@ -2,7 +2,6 @@ import React from 'react'
 
 const Recipe = ({ recipe }) => {
     const { recipeName, username, vegan, vegetarian, ingredients, description } = recipe
-
     return (
         <div>
             <h3>{recipeName}</h3>

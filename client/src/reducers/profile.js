@@ -5,6 +5,16 @@ export default (state = { user: null, message: '' }, action) => {
                 ...state,
                 user: action.user
             }
+        case 'ADD_FRIEND':
+            return {
+                user: action.user,
+                message: `Added ${action.user.friends[action.user.friends.length - 1]}`
+            }
+        case 'REMOVE_FRIEND':
+            return {
+                user: action.user,
+                message: 'Removed friend'
+            }
         case 'PROFILE_ERROR':
             return {
                 ...state,

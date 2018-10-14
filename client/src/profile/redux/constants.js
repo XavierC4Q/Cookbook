@@ -4,6 +4,8 @@ const ADD_RECIPE = 'ADD_RECIPE'
 const PROFILE_ERROR = 'PROFILE_ERROR'
 const RECIPE_ERROR = 'RECIPE_ERROR'
 const LOGOUT = 'LOGOUT'
+const ADD_FRIEND = 'ADD_FRIEND'
+const REMOVE_FRIEND = 'REMOVE_FRIEND'
 
 module.exports = {
     GET_USER,
@@ -11,5 +13,7 @@ module.exports = {
     ADD_RECIPE,
     LOGOUT,
     PROFILE_ERROR,
-    RECIPE_ERROR
+    RECIPE_ERROR,
+    ADD_FRIEND,
+    REMOVE_FRIEND
 }

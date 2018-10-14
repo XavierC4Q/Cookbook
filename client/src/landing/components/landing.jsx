@@ -3,6 +3,8 @@ import { withRouter, Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { default as dispatches } from '../redux/dispatches'
 
+import '../styles/landing.css'
+
 class Landing extends React.Component {
 
     componentDidMount(){
@@ -15,13 +17,8 @@ class Landing extends React.Component {
             return (<Redirect to='/cookbook'/>)
         }
         return (
-            <div>
-                <nav>
-                    <Link to='/login'>LOGIN PAGE</Link>
-                    {" "}
-                    <Link to='/register'>REGISTER PAGE</Link>
-                </nav>
-                <h1>WELCOME TO COOKBOOK</h1>
+            <div className='landing-container'>
+                <p className='landing-title'>WELCOME TO COOKBOOK</p>
             </div>
         )
     }

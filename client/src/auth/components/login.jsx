@@ -3,26 +3,24 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { default as dispatches } from '../redux/dispatches'
+import { FormInputs } from '../../util/formfields'
+
+import '../styles/auth.css'
 
 class Login extends React.Component {
     render() {
-        const { handleSubmit, loginUser, currentUser } = this.props
+        const { handleSubmit, authError, pristine, loginUser, currentUser, location, reset, submitting } = this.props
         if(currentUser){
             return (<Redirect to='/cookbook'/>)
         }
         return (
-            <div>
-                <h1>WELCOME BACK, LOGIN BELOW</h1>
-                <form onSubmit={handleSubmit(loginUser)}>
-                    <div>
-                        <label>USERNAME</label>
-                        <Field name='username' component='input' />
-                    </div>
-                    <div>
-                        <label>PASSWORD</label>
-                        <Field name='password' component='input' />
-                    </div>
-                    <button type='submit'>SUBMIT</button>
+            <div className='form-container'>
+                <h1 className='form-header'>WELCOME BACK, LOGIN BELOW</h1>
+                <form className='form' onSubmit={handleSubmit(loginUser)}>
+                        <Field name='username' label='Username' component={FormInputs} />
+                        <Field name='password' label='Password' component={FormInputs} />
+                    <button className='form-button' type='submit' onClick={reset}>SUBMIT</button>
+                    <p>{authError ? authError : ''}</p>
                 </form>
             </div>
         )
@@ -46,7 +44,7 @@ const mapDispatchToProps = (dispatch) => {
 
 Login = connect(mapStateToProps, mapDispatchToProps)(Login)
 
-export default withRouter(reduxForm({
+export default reduxForm({
     form: 'Login'
-})(Login))
+})(Login)
 

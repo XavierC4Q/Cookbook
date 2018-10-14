@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import Recipelist from '../../util/recipelist'
 
 const LoggedInProfile = ({ pageOwner, recipes, logout }) => {
@@ -15,4 +15,4 @@ const LoggedInProfile = ({ pageOwner, recipes, logout }) => {
     )
 }
 
-export default LoggedInProfile
+export default withRouter(LoggedInProfile)

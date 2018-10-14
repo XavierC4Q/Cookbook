@@ -3,42 +3,38 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { default as dispatches } from '../redux/dispatches'
+import { FormInputs } from '../../util/formfields'
 
 class Register extends React.Component {
     render() {
-        const { handleSubmit, registerUser, currentUser } = this.props
-        if(currentUser){
-            return (<Redirect to='/cookbook'/>)
+        const { handleSubmit, reset, pristine, registerUser, currentUser, location, submitting, authError } = this.props
+        if (currentUser) {
+            return (<Redirect to='/cookbook' />)
         }
         return (
-            <div>
-                <h1>REGISTER BELOW</h1>
-                <form onSubmit={handleSubmit(registerUser)}>
+            <div className='form-container'>
+                <h1 className='form-header'>REGISTER BELOW</h1>
+                <form className='form' onSubmit={handleSubmit(registerUser)}>
                     <div>
-                        <label>USERNAME</label>
-                        <Field name='username' component='input' />
+                        <Field name='username' label='Username' component={FormInputs} />
                     </div>
                     <div>
-                        <label>PASSWORD</label>
-                        <Field name='password' component='input' />
+                        <Field name='password' label='Password' component={FormInputs} />
                     </div>
                     <div>
-                        <label>EMAIL</label>
-                        <Field name='email' component='input' />
+                        <Field name='email' label='Email' component={FormInputs} />
                     </div>
                     <div>
-                        <label>FIRST NAME</label>
-                        <Field name='firstName' component='input' />
+                        <Field name='firstName' label='First Name' component={FormInputs} />
                     </div>
                     <div>
-                        <label>LAST NAME</label>
-                        <Field name='lastName' component='input' />
+                        <Field name='lastName' label='Last Name' component={FormInputs} />
                     </div>
                     <div>
-                        <label>AGE</label>
-                        <Field name='age' component='input' />
+                        <Field name='age' label='Age' component={FormInputs} />
                     </div>
-                    <button type='submit'>SUBMIT</button>
+                    <button className='form-button' onClick={reset} type='submit'>SUBMIT</button>
+                    <p>{authError ? authError : ''}</p>
                 </form>
             </div>
         )
@@ -48,7 +44,7 @@ class Register extends React.Component {
 const mapStateToProps = state => {
     return {
         currentUser: state.auth.currentUser,
-        authError: state.auth.message 
+        authError: state.auth.message
     }
 }
 
@@ -62,6 +58,6 @@ const mapDispatchToProps = (dispatch) => {
 
 Register = connect(mapStateToProps, mapDispatchToProps)(Register)
 
-export default withRouter(reduxForm({
+export default reduxForm({
     form: 'Register'
-})(Register))
+})(Register)

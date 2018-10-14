@@ -65,9 +65,41 @@ const addUserRecipe = (recipe) => {
     }
 }
 
+const addFriend = (id, friend) => {
+    return (dispatch) => {
+        axios.post('/users/addFriend', {
+            id: id,
+            friend: friend
+        })
+        .then(res => {
+            dispatch(actions.addFriend(res.data))
+        })
+        .catch(error => {
+            dispatch(actions.profileError(error))
+        })
+    }
+}
+
+const removeFriend = (id, friend) => {
+    return (dispatch) => {
+        axios.patch('/users/removeFriend', {
+            id: id,
+            friend: friend
+        })
+        .then(res => {
+            dispatch(actions.removeFriend(res.data))
+        })
+        .catch(error => {
+            dispatch(actions.profileError(error))
+        })
+    }
+}
+
 export default {
     getUserInfo,
     getUserRecipes,
     addUserRecipe,
-    logoutUser
+    logoutUser,
+    addFriend,
+    removeFriend
 }

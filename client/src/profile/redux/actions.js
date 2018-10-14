@@ -41,11 +41,27 @@ const recipeError = (error) => {
     }
 }
 
+const addFriend = (user) => {
+    return {
+        type: constants.ADD_FRIEND,
+        user: user
+    }
+}
+
+const removeFriend = (user) => {
+    return {
+        type: constants.REMOVE_FRIEND,
+        user: user
+    }
+}
+
 export default {
     getUser,
     getUserRecipes,
     addRecipe,
     logout,
     profileError,
-    recipeError
+    recipeError,
+    addFriend,
+    removeFriend
 }

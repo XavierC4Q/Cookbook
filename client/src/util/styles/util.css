@@ -1,0 +1,27 @@
+.formfield-container {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+.formfield-label {
+    width: 45%;
+    height: 100%;
+    font-size: 135%;
+    margin: 0 auto;
+    background-color: orangered;
+    color: white;
+    text-align: center  
+}
+
+.formfield-input {
+    width: 45%;
+    height: 25px;
+    font-size: 120%;
+    font-family: 'Sorts Mill Goudy', serif;
+}
+
+.formfield-input:focus {
+    border: none;
+    margin: 0
+}

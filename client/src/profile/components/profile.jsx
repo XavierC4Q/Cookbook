@@ -13,13 +13,16 @@ class Profile extends React.Component {
     }
 
     render(){
-        const { currentUser, pageOwner, recipes, addRecipe, logout } = this.props
+        const { currentUser, pageOwner, recipes, addRecipe, logout, friendUser, unfriendUser, location } = this.props
         return (
             pageOwner ? <UserProfile 
                         currentUser={currentUser} 
                         pageOwner={pageOwner} 
                         addRecipe={addRecipe}
-                        recipes={recipes} 
+                        recipes={recipes}
+                        friendUser={friendUser}
+                        unfriendUser={unfriendUser}
+                        location={location}
                         logout={logout}
                         /> 
                         : 
@@ -52,6 +55,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         logout: () => {
             dispatch(dispatches.logoutUser())
+        },
+        friendUser: (id, friend) => {
+            dispatch(dispatches.addFriend(id, friend))
+        },
+        unfriendUser: (id, friend) => {
+            dispatch(dispatches.removeFriend(id, friend))
         }
     }
 }
