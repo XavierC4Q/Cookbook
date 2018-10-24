@@ -23,14 +23,18 @@ function addRecipe(req, res){
         ingredients
     } = req.body
 
+    const image = req.file.path
+
     let newRecipe = new Recipe({
         username,
         recipeName,
         description,
         vegan,
         vegetarian,
-        ingredients
+        ingredients,
+        image
     })
+    console.log('THE IMAGE',req.file)
     newRecipe.save((error, recipe) => {
         if(error) return res.write(error)
         if(!recipe) return res.write(new Error('CANNOT SAVE NEW RECIPE'))
