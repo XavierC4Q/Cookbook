@@ -23,7 +23,8 @@ const RecipeSchema = new schema({
         default: false
     },
     ingredients: Array,
-    description: String
+    description: String,
+    image: String
 });
 
 const Recipe = mongoose.model('Recipe', RecipeSchema);
