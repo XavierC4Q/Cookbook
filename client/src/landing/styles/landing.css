@@ -2,9 +2,9 @@
     text-align: center;
     background-image: url('https://www.sterlingeventsgroup.com/wp-content/uploads/2018/01/food-salad-dinner-eating-1080x675.jpg');
     background-repeat: no-repeat;
-    background-size: 100%;
-    width: inherit;
-    height: inherit;
+    background-size: cover;
+    width: auto;
+    height: 100%;
     color: white
 }
 
