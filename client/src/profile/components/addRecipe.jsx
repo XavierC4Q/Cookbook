@@ -3,7 +3,7 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import { default as dispatches } from '../redux/dispatches'
-import { FormInputs, FormArrays } from '../../util/formfields'
+import { FormInputs, FormArrays, FormUploads } from '../../util/formfields'
 
 
 class AddRecipe extends React.Component {
@@ -20,8 +20,7 @@ class AddRecipe extends React.Component {
 
     submitRecipe = (values) => {
         const { currentUser, addRecipe } = this.props
-        const { recipeName, vegan, vegetarian, ingredients, description } = values
-
+        const { recipeName, vegan, vegetarian, ingredients, description, image } = values
 
         const newRecipe = {
             username: currentUser.username,
@@ -29,7 +28,8 @@ class AddRecipe extends React.Component {
             vegan: vegan,
             vegetarian: vegetarian,
             description: description,
-            ingredients: ingredients
+            ingredients: ingredients,
+            image: image
         }
 
         addRecipe(newRecipe)
@@ -48,12 +48,13 @@ class AddRecipe extends React.Component {
         return (
             <div>
                 <h1>ADD YOUR RECIPE</h1>
-                <form onSubmit={handleSubmit(this.submitRecipe)}>
-                    <Field label='Recipe Name' name='recipeName' type='text' component={FormInputs} />
+                <form onSubmit={handleSubmit(this.submitRecipe)} encType='multipart/form-data'>
+                    <Field label='Recipe Name' name='recipeName' component={FormInputs} />
                     <Field label='Vegetarian' name='vegetarian' type='checkbox' component={FormInputs} />
                     <Field label='Vegan' name='vegan' type='checkbox' component={FormInputs} />
-                    <Field name='description' label='Recipe Description' type='textarea' component={FormInputs} />
+                    <Field name='description' label='Recipe Description' component={FormInputs} />
                     <FieldArray name='ingredients' label='Ingredients' component={FormArrays} />
+                    <Field name='image' label='Recipe Image' component={FormUploads} />
                     <button type='submit'>SUBMIT NEW RECIPE</button>
                 </form>
             </div>

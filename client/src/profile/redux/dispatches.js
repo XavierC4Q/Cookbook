@@ -45,18 +45,19 @@ const addUserRecipe = (recipe) => {
             vegan, 
             vegetarian,
             description,
-            ingredients
+            ingredients,
+            image
         } = recipe
 
-        axios.post('/recipe/add', {
-            username: username,
-            recipeName: recipeName,
-            vegan: vegan,
-            vegetarian: vegetarian,
-            description: description,
-            ingredients: ingredients
-        })
+        let data = new FormData()
+
+        for (let k in recipe){
+            data.append(`${k}`, recipe[k])
+        }
+
+        axios.post('/recipe/add',data)
         .then(res => {
+            console.log(res)
             dispatch(actions.addRecipe(res.data))
         })
         .catch(error => {

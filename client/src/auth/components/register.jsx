@@ -8,6 +8,7 @@ import { FormInputs } from '../../util/formfields'
 class Register extends React.Component {
     render() {
         const { handleSubmit, reset, pristine, registerUser, currentUser, location, submitting, authError } = this.props
+        console.log('RERENDER IN REGISTER WHEN I INPUT')
         if (currentUser) {
             return (<Redirect to='/cookbook' />)
         }
@@ -56,7 +57,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-Register = connect(mapStateToProps, mapDispatchToProps)(Register)
+Register = withRouter(connect(mapStateToProps, mapDispatchToProps)(Register))
 
 export default reduxForm({
     form: 'Register'

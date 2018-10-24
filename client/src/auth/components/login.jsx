@@ -19,7 +19,7 @@ class Login extends React.Component {
                 <form className='form' onSubmit={handleSubmit(loginUser)}>
                         <Field name='username' label='Username' component={FormInputs} />
                         <Field name='password' label='Password' component={FormInputs} />
-                    <button className='form-button' type='submit' onClick={reset}>SUBMIT</button>
+                    <button className='form-button' type='submit'>SUBMIT</button>
                     <p>{authError ? authError : ''}</p>
                 </form>
             </div>

@@ -7,7 +7,6 @@ const loginUser = (values) => {
             username,
             password
         } = values
-
         axios.post('/login', {
                 username: username,
                 password: password
@@ -22,6 +21,7 @@ const loginUser = (values) => {
 }
 
 const registerUser = (values) => {
+    console.log(values)
     return (dispatch) => {
         const {
             username,

@@ -17,6 +17,7 @@ const Feed = ({ currentUser, location }) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
         currentUser: state.auth.currentUser,
         authError: state.auth.message 
